@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block titulo%} enlaces de codigo {% endblock %}
+{% block barraContenido %}
+
+enlaces catalogados
+{% endblock %}
+
+{% block contenido %}
+
+{% if enlaces %}
+
+
+	{% for enlace in enlaces %}
+		<article class="enlaces_codigo">			
+			<div class="listCodigoTitulo">				
+				<span class="tituloCodigo">
+					<a href="/detalle/codigo/{{ codigo.id }}">{{ enlace.titulo }}</a>
+				</span>
+				<span class=" icon-file-2"></span>
+				<span >F</span>
+				{% if enlace.archivo %}
+					<a href="{{MEDIA_URL}}/{{enlace.archivo}}"><span class=" icon-attachment"></span></a>
+				{% else %}
+					<span class="  icon-attachment"></span>
+				{% endif %}
+				
+				<span class="lenguajeCodigo" >Python</span>
+				<span >SO</span>
+			</div>
+			<div class="listCodigoContenido">
+				<p>{{ enlace.descripcion }}dasdasd </p>
+			</div>		
+		</article>
+
+		
+	{% endfor %}
+{% endif %}
+
+
+
+
+<br/>
+{% if enlaces %}
+		<a href="/enlaces/1"> Primero </a>
+	{% if enlaces.has_previous %}
+		<a href="/enlaces/{{enlaces.previous_page_number}}/"> anterior </a>
+	{% else %}
+		<a href="#">anterior </a>
+	{%endif%}
+	{% if enlaces.has_next %}
+		<a href="/enlaces/{{enlaces.next_page_number}}/">siguiente </a>
+	{% else %}
+		<a href="#">siguiente </a>
+	{%endif%}
+
+<a href="/enlaces/{{enlaces.paginator.num_pages}}">Ultimo </a>
+
+
+<h4>Pagina {{ enlaces.number }} de {{enlaces.paginator.num_pages}}</h4>
+{% endif%}
+{% endblock %}

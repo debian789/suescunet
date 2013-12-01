@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block titulo %} Inicio Bienvenidos{% endblock %}
+{% block contenido%}
+
+
+{% if galerias  %}
+		<article>
+	{% for galeria in galerias %}
+			<div class="cuadroImagen">
+				<a href="{% url 'vista_galeria_detalle' galeria.id%}">
+			<span class="tituloImagen">{{galeria.titulo}}</span>
+			</a>
+			<figure>
+				<img src="{{MEDIA_URL}}/{{galeria.imagen}}">
+			</figure>		
+				<div class="opcionesImagen">
+					
+					<a href="eliminar"><span  class="icon-pencil2"></span></a>
+					<a href="eliminar"><span  class="icon-remove"></span></a>
+
+				</div>
+				
+			</div>
+	{% endfor%}
+		</article>
+{% endif%}
+
+<hr/>
+{% if user.is_authenticated %}
+<a href="{% url 'vista_galeria_ingresar2' %}"> Agregar Nuevo</a>
+{% endif %}
+
+
+
+
+{% endblock%}
+

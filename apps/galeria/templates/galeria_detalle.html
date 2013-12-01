@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block titulo %} Inicio Bienvenidos{% endblock %}
+{% block contenido%}
+
+
+{% if galerias  %}
+		<article  class="detalles">
+			<h1>{{galerias.titulo}}</h1>
+			<div class="detallesCodigoBarra">
+				
+			<h2>Descripcion</h2>
+			</div>
+			<p>{{galerias.descripcion}}</p>
+			
+			<figure class="figura">
+				<img src="{{MEDIA_URL}}/{{galerias.imagen}}">
+			</figure>
+			
+						
+			
+		</div>
+		</article>
+{% endif%}
+
+{% if user.is_authenticated %}
+<a href="{% url 'vista_galeria_ingresar2' %}"> Agregar Nuevo</a>
+{% endif %}
+
+
+
+{% endblock%}
+
