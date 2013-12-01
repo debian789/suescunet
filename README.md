@@ -1,4 +1,4 @@
 suescunet
 =========
 
-Administrar archivos de código fuente desde una aplicación web echa con Django 
+Administrar archivos de código fuente desde una aplicación web hecha con Django 
